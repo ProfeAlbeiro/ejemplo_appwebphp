@@ -52,7 +52,7 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="?">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?c=Landing&a=about">About</a>
