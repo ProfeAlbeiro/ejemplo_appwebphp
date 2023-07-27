@@ -1,6 +1,6 @@
 <?php
     class Login{
-        public function __construct(){}
+        public function __construct(){}        
         public function main(){
             $mensaje = "";
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
