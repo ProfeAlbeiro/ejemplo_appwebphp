@@ -16,6 +16,7 @@
                             <button type="submit" class="btn btn-success btn-lg px-3">Enviar</button>
                         </div>
                     </div>
+                    <?php echo $mensaje ?>
                 </div>
             </form>
         </div>
