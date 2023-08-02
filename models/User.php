@@ -41,18 +41,18 @@
             return $this->userCode;
         } 
         # Métodos: userName
-        public function setUserName($UserName){
-            $this->UserName = $UserName;
+        public function setUserName($userName){
+            $this->userName = $userName;
         } 
         public function getUserName(){
-            return $this->UserName;
+            return $this->userName;
         } 
         # Métodos: userLastName
-        public function setUserLastName($UserLastName){
-            $this->UserLastName = $UserLastName;
+        public function setUserLastName($userLastName){
+            $this->userLastName = $userLastName;
         } 
         public function getUserLastName(){
-            return $this->UserLastName;
+            return $this->userLastName;
         } 
         # Métodos: userEmail
         public function setUserEmail($userEmail){
@@ -69,11 +69,11 @@
             return $this->userPass;
         } 
         # Métodos: userStatus
-        public function setUserStatus($UserStatus){
-            $this->UserStatus = $UserStatus;
+        public function setUserStatus($userStatus){
+            $this->userStatus = $userStatus;
         } 
         public function getUserStatus(){
-            return $this->UserStatus;
+            return $this->userStatus;
         } 
     }
 ?>
