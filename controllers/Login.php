@@ -1,4 +1,5 @@
 <?php
+    require_once "Models/User.php";
     class Login{
         public function __construct(){}        
         public function main(){
@@ -9,9 +10,8 @@
                 require_once "views/company/footer.view.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $user = $_POST['email'];
-                $pass = $_POST['pass'];                
-                if ($user == "pepito@correo.com" && $pass == "12345") {
+                $user = new User($_POST['email'], $_POST['pass']);
+                if ($user->getUserEmail() == "pepito@correo.com" && $user->getUserPass() == "12345") {
                     header("Location: ?c=Dashboard");
                 } else {                    
                     $mensaje = "Usuario Incorrecto";
