@@ -114,5 +114,12 @@
                 return false;
             }
         }
+        # CU02 - Iniciar Sesión
+        # CU03 - Recuperar Contraseña
+        # CU04 - Registro de Usuario
+        # CU05 - Consultar Usuarios
+        # CU06 - Actualizar Usuario
+        # CU07 - Obtener Usuario por Id
+        # CU08 - Eliminar Usuario
     }
 ?>

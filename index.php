@@ -1,8 +1,8 @@
 <?php
     require_once "models/DataBase.php";    
     if (!isset($_REQUEST['c'])) {        
-        require_once "controllers/Landing.php";        
-        $controller = new Landing;
+        require_once "controllers/Roles.php";        
+        $controller = new Roles;
         $controller->main();
     } else {
         $controller = $_REQUEST['c'];
