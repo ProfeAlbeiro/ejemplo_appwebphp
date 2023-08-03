@@ -11,7 +11,9 @@
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $user = new User($_POST['email'], $_POST['pass']);
-                if ($user->getUserEmail() == "pepito@correo.com" && $user->getUserPass() == "12345") {
+                $user = $user->login();
+                print_r($user);
+                if ($user) {
                     header("Location: ?c=Dashboard");
                 } else {                    
                     $mensaje = "Usuario Incorrecto";

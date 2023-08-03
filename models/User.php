@@ -1,6 +1,7 @@
 <?php
     class User{
         # Atributos
+        private $dbh;
         protected $rolCode;
         protected $userCode;
         protected $userName;
@@ -12,6 +13,7 @@
         # Sobrecarga de Constructores
         public function __construct(){
             try {
+                $this->dbh = DataBase::connection();
                 $a = func_get_args();
                 $i = func_num_args();
                 if (method_exists($this, $f = '__construct' . $i)) {
@@ -24,6 +26,15 @@
         public function __construct2($userEmail, $userPass){
             $this->userEmail = $userEmail;
             $this->userPass = $userPass;
+        }
+        public function __construct7($rolCode,$userCode,$userName,$userLastName,$userEmail,$userPass,$userStatus){
+            $this->rolCode = $rolCode;
+            $this->userCode = $userCode;
+            $this->userName = $userName;
+            $this->userLastName = $userLastName;
+            $this->userEmail = $userEmail;
+            $this->userPass = $userPass;
+            $this->userStatus = $userStatus;
         }
 
         # Métodos: RolCode
@@ -74,6 +85,34 @@
         } 
         public function getUserStatus(){
             return $this->userStatus;
-        } 
+        }
+        
+        // 2da Parte. Persistencia a la Bases de Datos
+
+        # CU01 - Iniciar Sesión
+        public function login(){
+            $sql = 'SELECT * FROM USUARIOS
+                    WHERE usuario_correo = :usuario_correo 
+                    AND usuario_pass = :usuario_pass';
+            $stmt = $this->dbh->prepare($sql);
+            $stmt->bindValue('usuario_correo', $this->getUserEmail());
+            $stmt->bindValue('usuario_pass', sha1($this->getUserPass()));
+            $stmt->execute();
+            $userDb = $stmt->fetch();
+            if ($userDb) {
+                $user = new User(
+                    $userDb['rol_codigo'],
+                    $userDb['usuario_codigo'],
+                    $userDb['usuario_nombre'],
+                    $userDb['usuario_apellido'],
+                    $userDb['usuario_correo'],
+                    $userDb['usuario_pass'],
+                    $userDb['usuario_estado']
+                );
+                return $user;
+            } else {
+                return false;
+            }
+        }
     }
 ?>
