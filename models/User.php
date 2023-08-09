@@ -114,7 +114,7 @@
                 return false;
             }
         }
-        # CU02 - Iniciar Sesión
+        # CU02 - Cerrar Sesión
         # CU03 - Recuperar Contraseña
         # CU04 - Registro de Usuario
         # CU05 - Consultar Usuarios
