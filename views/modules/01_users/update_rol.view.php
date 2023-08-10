@@ -1,7 +1,7 @@
 <!-- Page header -->
 <div class="full-box page-header">
     <h3 class="text-left">
-        <i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR ROL
+        <i class="fas fa-plus fa-fw"></i> &nbsp; ACTUALIZAR ROL
     </h3>
     <p class="text-justify">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque laudantium necessitatibus eius iure adipisci modi distinctio. Earum repellat iste et aut, ullam, animi similique sed soluta tempore cum quis corporis!
@@ -29,11 +29,14 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 col-md-4">
+                        <div class="form-group">                            
+                            <input type="hidden" pattern="[a-zA-záéíóúÁÉÍÓÚñÑ0-9 ]{1,140}" class="form-control" name="codigoRol" id="item_nombre" maxlength="140" value="<?php echo $rol->getRolCode() ?>">
+                        </div>
                         <div class="form-group">
                             <label for="item_nombre" class="bmd-label-floating">Nombre Rol</label>
-                            <input type="text" pattern="[a-zA-záéíóúÁÉÍÓÚñÑ0-9 ]{1,140}" class="form-control" name="nombreRol" id="item_nombre" maxlength="140" required>
+                            <input type="text" pattern="[a-zA-záéíóúÁÉÍÓÚñÑ0-9 ]{1,140}" class="form-control" name="nombreRol" id="item_nombre" maxlength="140" value="<?php echo $rol->getRolName() ?>">
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </fieldset>

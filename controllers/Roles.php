@@ -17,17 +17,19 @@
                     null,
                     $_POST['nombreRol']
                 );
+                // Validación
                 $rol->registrarRol();
-                header("Location: ?c=Roles&a=registrarRoles");
-                // header("Location: ?c=Roles&a=consultarRoles");
+                header("Location: ?c=Roles&a=consultarRoles");
             }
         }
         // Consultar Roles
         public function consultarRoles(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $roles = new Rol;
-                $roles = $roles->consultarRoles();                
-                echo "Tabla de Roles";
+                $roles = $roles->consultarRoles();
+                require_once "views/roles/admin/header.view.php";
+                require_once "views/modules/01_users/read_rol.view.php";
+                require_once "views/roles/admin/footer.view.php";
             }
         }
         // Actualizar Rol
@@ -35,13 +37,15 @@
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $rol = new Rol;
                 $rol = $rol->obtenerRolPorId($_GET['codigoRol']);
-                echo "Formulario de Actualización Rol";                
+                require_once "views/roles/admin/header.view.php";
+                require_once "views/modules/01_users/update_rol.view.php";
+                require_once "views/roles/admin/footer.view.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $rol = new Rol(
-                    null,
+                    $_POST['codigoRol'],
                     $_POST['nombreRol']
-                );
+                );                
                 $rol->actualizarRol();
                 header("Location: ?c=Roles&a=consultarRoles");
             }

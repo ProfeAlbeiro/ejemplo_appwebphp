@@ -13,7 +13,7 @@
                 $i = func_num_args();
                 if (method_exists($this, $f = '__construct' . $i)) {
                     call_user_func_array(array($this, $f), $a);
-                }
+                }                
             } catch (Exception $e) {
                 die($e->getMessage());
             }
@@ -21,6 +21,7 @@
         public function __construct2($rolCode, $rolName){
             $this->rolCode = $rolCode;
             $this->rolName = $rolName;
+            // Validar
         }
         # Métodos: RolCode
         public function setRolCode($rolCode){
@@ -45,7 +46,8 @@
                 $sql = 'INSERT INTO ROLES VALUES (:rolCodigo,:rolNombre)';  
                 $stmt = $this->dbh->prepare($sql);                
                 $stmt->bindValue('rolCodigo', $this->getRolCode());
-                $stmt->bindValue('rolNombre', $this->getRolName());                
+                $stmt->bindValue('rolNombre', $this->getRolName());
+                // Validar
                 $stmt->execute();
             } catch (Exception $e) {
                 die($e->getMessage());
