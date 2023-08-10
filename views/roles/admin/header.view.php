@@ -56,6 +56,36 @@
                         </li>
 
                         <li>
+                            <a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Roles <i class="fas fa-chevron-down"></i></a>
+                            <ul>
+                                <li>
+                                    <a href="?c=Roles&a=registrarRoles"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Rol</a>
+                                </li>
+                                <li>
+                                    <a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Roles</a>
+                                </li>
+                                <li>
+                                    <a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Rol</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
+                            <ul>
+                                <li>
+                                    <a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
+                                </li>
+                                <li>
+                                    <a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>
+                                </li>
+                                <li>
+                                    <a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar usuario</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
                             <a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Clientes <i class="fas fa-chevron-down"></i></a>
                             <ul>
                                 <li>
@@ -104,24 +134,23 @@
                         </li>
 
                         <li>
-                            <a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
-                            <ul>
-                                <li>
-                                    <a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
-                                </li>
-                                <li>
-                                    <a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>
-                                </li>
-                                <li>
-                                    <a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar usuario</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
                             <a href="company.html"><i class="fas fa-store-alt fa-fw"></i> &nbsp; Empresa</a>
                         </li>
                     </ul>
                 </nav>
             </div>
         </section>
+
+        <!-- Page content -->
+        <section class="full-box page-content">
+            <nav class="full-box navbar-info">
+                <a href="#" class="float-left show-nav-lateral">
+                    <i class="fas fa-exchange-alt"></i>
+                </a>
+                <a href="user-update.html">
+                    <i class="fas fa-user-cog"></i>
+                </a>
+                <a href="?c=Logout">
+                    <i class="fas fa-power-off"></i>
+                </a>
+            </nav>

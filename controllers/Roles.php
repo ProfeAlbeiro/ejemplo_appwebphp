@@ -8,7 +8,9 @@
         // Crear Rol
         public function registrarRoles(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                echo "Formulario de Registro de Roles";
+                require_once "views/roles/admin/header.view.php";
+                require_once "views/modules/01_users/create_rol.view.php";
+                require_once "views/roles/admin/footer.view.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $rol = new Rol(
@@ -16,9 +18,10 @@
                     $_POST['nombreRol']
                 );
                 $rol->registrarRol();
-                header("Location: ?c=Roles&a=consultarRoles");
+                header("Location: ?c=Roles&a=registrarRoles");
+                // header("Location: ?c=Roles&a=consultarRoles");
             }
-        }        
+        }
         // Consultar Roles
         public function consultarRoles(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
