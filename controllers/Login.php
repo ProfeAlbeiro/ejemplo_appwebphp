@@ -11,8 +11,7 @@
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $user = new User($_POST['email'], $_POST['pass']);
-                $user = $user->login();
-                print_r($user);
+                $user = $user->login();                
                 if ($user) {
                     header("Location: ?c=Dashboard");
                 } else {                    
