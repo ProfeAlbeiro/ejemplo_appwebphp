@@ -1,8 +1,8 @@
 <?php
     require_once "models/DataBase.php";    
     if (!isset($_REQUEST['c'])) {        
-        require_once "controllers/Roles.php";        
-        $controller = new Roles;
+        require_once "controllers/Users.php";        
+        $controller = new Users;
         $controller->main();
     } else {
         $controller = $_REQUEST['c'];

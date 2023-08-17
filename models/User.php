@@ -114,9 +114,34 @@
                 return false;
             }
         }
-        # CU02 - Cerrar Sesión
-        # CU03 - Recuperar Contraseña
-        # CU04 - Registro de Usuario
+    # CU02 - Cerrar Sesión
+    # CU03 - Recuperar Contraseña
+    # CU04 - Registro de Usuario
+    public function registrarUsuario()
+    {
+        try {
+            $sql = 'INSERT INTO USUARIOS VALUES (
+                        :rolCode,
+                        :userCode,
+                        :userName,
+                        :userLastName,
+                        :userEmail,
+                        :userPass,
+                        :userStatus
+                    )';
+            $stmt = $this->dbh->prepare($sql);
+            $stmt->bindValue('rolCode', $this->getRolCode());
+            $stmt->bindValue('userCode', $this->getUserCode());
+            $stmt->bindValue('userName', $this->getUserName());
+            $stmt->bindValue('userLastName', $this->getUserLastName());
+            $stmt->bindValue('userEmail', $this->getUserEmail());
+            $stmt->bindValue('userPass', sha1($this->getUserPass()));
+            $stmt->bindValue('userStatus', $this->getUserStatus());            
+            $stmt->execute();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
         # CU05 - Consultar Usuarios
         # CU06 - Actualizar Usuario
         # CU07 - Obtener Usuario por Id
