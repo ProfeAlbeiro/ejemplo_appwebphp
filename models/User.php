@@ -114,58 +114,102 @@
                 return false;
             }
         }
-    # CU02 - Cerrar Sesión
-    # CU03 - Recuperar Contraseña
-    # CU04 - Registro de Usuario
-    public function registrarUsuario() {
-        try {
-            $sql = 'INSERT INTO USUARIOS VALUES (
-                        :rolCode,
-                        :userCode,
-                        :userName,
-                        :userLastName,
-                        :userEmail,
-                        :userPass,
-                        :userStatus
-                    )';
-            $stmt = $this->dbh->prepare($sql);
-            $stmt->bindValue('rolCode', $this->getRolCode());
-            $stmt->bindValue('userCode', $this->getUserCode());
-            $stmt->bindValue('userName', $this->getUserName());
-            $stmt->bindValue('userLastName', $this->getUserLastName());
-            $stmt->bindValue('userEmail', $this->getUserEmail());
-            $stmt->bindValue('userPass', sha1($this->getUserPass()));
-            $stmt->bindValue('userStatus', $this->getUserStatus());            
-            $stmt->execute();
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-    # CU05 - Consultar Usuarios
-    public function consultarUsuarios()
-    {
-        try {
-            $userList = [];
-            $sql = 'SELECT * FROM USUARIOS';
-            $stmt = $this->dbh->query($sql);
-            foreach ($stmt->fetchAll() as $user) {
-                $userList[] = new User(
-                    $user['rol_codigo'],
-                    $user['usuario_codigo'],
-                    $user['usuario_nombre'],
-                    $user['usuario_apellido'],
-                    $user['usuario_correo'],
-                    $user['usuario_pass'],
-                    $user['usuario_estado']
-                );
+        # CU02 - Cerrar Sesión
+        # CU03 - Recuperar Contraseña
+        # CU04 - Registro de Usuario
+        public function registrarUsuario() {
+            try {
+                $sql = 'INSERT INTO USUARIOS VALUES (
+                            :rolCode,
+                            :userCode,
+                            :userName,
+                            :userLastName,
+                            :userEmail,
+                            :userPass,
+                            :userStatus
+                        )';
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->bindValue('rolCode', $this->getRolCode());
+                $stmt->bindValue('userCode', $this->getUserCode());
+                $stmt->bindValue('userName', $this->getUserName());
+                $stmt->bindValue('userLastName', $this->getUserLastName());
+                $stmt->bindValue('userEmail', $this->getUserEmail());
+                $stmt->bindValue('userPass', sha1($this->getUserPass()));
+                $stmt->bindValue('userStatus', $this->getUserStatus());            
+                $stmt->execute();
+            } catch (Exception $e) {
+                die($e->getMessage());
             }
-            return $userList;
-        } catch (Exception $e) {
-            die($e->getMessage());
         }
-    }
+        # CU05 - Consultar Usuarios
+        public function consultarUsuarios() {
+            try {
+                $userList = [];
+                $sql = 'SELECT * FROM USUARIOS';
+                $stmt = $this->dbh->query($sql);
+                foreach ($stmt->fetchAll() as $user) {
+                    $userList[] = new User(
+                        $user['rol_codigo'],
+                        $user['usuario_codigo'],
+                        $user['usuario_nombre'],
+                        $user['usuario_apellido'],
+                        $user['usuario_correo'],
+                        $user['usuario_pass'],
+                        $user['usuario_estado']
+                    );
+                }
+                return $userList;
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
         # CU06 - Actualizar Usuario
+        public function actualizarUsuario() {
+            try {
+                $sql = 'UPDATE USUARIOS SET
+                            rol_codigo = :rolCode,
+                            usuario_codigo = :userCode,
+                            usuario_nombre = :userName,
+                            usuario_apellido = :userLastName,
+                            usuario_correo = :userEmail,
+                            usuario_pass = :userPass,
+                            usuario_estado = :userStatus
+                        WHERE usuario_codigo = :userCode';
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->bindValue('rolCode', $this->getRolCode());
+                $stmt->bindValue('userCode',$this->getUserCode());
+                $stmt->bindValue('userName',$this->getUserName());
+                $stmt->bindValue('userLastName',$this->getUserLastName());
+                $stmt->bindValue('userEmail',$this->getUserEmail());
+                $stmt->bindValue('userPass',sha1($this->getUserPass()));
+                $stmt->bindValue('userStatus',$this->getUserStatus());
+                $stmt->execute();
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
         # CU07 - Obtener Usuario por Id
+        public function obtenerUserPorId($userCode) {
+            try {
+                $sql = "SELECT * FROM USUARIOS WHERE usuario_codigo=:userCode";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->bindValue('userCode', $userCode);
+                $stmt->execute();
+                $userDB = $stmt->fetch();
+                $user = new User(
+                    $userDB['rol_codigo'],
+                    $userDB['usuario_codigo'],
+                    $userDB['usuario_nombre'],
+                    $userDB['usuario_apellido'],
+                    $userDB['usuario_correo'],
+                    $userDB['usuario_pass'],
+                    $userDB['usuario_estado']
+                );
+                return $user;
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
         # CU08 - Eliminar Usuario
     }
 ?>
