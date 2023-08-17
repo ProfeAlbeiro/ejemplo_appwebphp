@@ -5,17 +5,24 @@
         public function main(){
             header("Location: ?c=Dashboard");
         }
-        public function registrarUsuario(){
+        public function registrarUsuarios(){
             $user = new User(
-                1,
-                1,
-                "Pepito",
-                "Perez",
-                "pepito@perez.com",
-                sha1("12345"),
-                1
-            );
+                $_POST['rolCode'],
+                $_POST['userCode'],
+                $_POST['userName'],
+                $_POST['userLastName'],
+                $_POST['userEmail'],
+                $_POST['userPass'],
+                $_POST['userStatus']
+            );            
             $user->registrarUsuario();
+        }
+        public function consultarUsuarios(){
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $users = new User;
+                $users = $users->consultarUsuarios();
+                print_r($users);
+            }
         }
 
     }

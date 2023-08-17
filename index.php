@@ -3,7 +3,7 @@
     if (!isset($_REQUEST['c'])) {        
         require_once "controllers/Users.php";        
         $controller = new Users;
-        $controller->main();
+        $controller->consultarUsuarios();
     } else {
         $controller = $_REQUEST['c'];
         require_once "controllers/" . $controller . ".php";

@@ -117,8 +117,7 @@
     # CU02 - Cerrar Sesión
     # CU03 - Recuperar Contraseña
     # CU04 - Registro de Usuario
-    public function registrarUsuario()
-    {
+    public function registrarUsuario() {
         try {
             $sql = 'INSERT INTO USUARIOS VALUES (
                         :rolCode,
@@ -142,7 +141,29 @@
             die($e->getMessage());
         }
     }
-        # CU05 - Consultar Usuarios
+    # CU05 - Consultar Usuarios
+    public function consultarUsuarios()
+    {
+        try {
+            $userList = [];
+            $sql = 'SELECT * FROM USUARIOS';
+            $stmt = $this->dbh->query($sql);
+            foreach ($stmt->fetchAll() as $user) {
+                $userList[] = new User(
+                    $user['rol_codigo'],
+                    $user['usuario_codigo'],
+                    $user['usuario_nombre'],
+                    $user['usuario_apellido'],
+                    $user['usuario_correo'],
+                    $user['usuario_pass'],
+                    $user['usuario_estado']
+                );
+            }
+            return $userList;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
         # CU06 - Actualizar Usuario
         # CU07 - Obtener Usuario por Id
         # CU08 - Eliminar Usuario
