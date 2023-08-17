@@ -50,5 +50,10 @@
                 header("Location: ?c=Users&a=consultarUsuarios");
             }
         }
+        public function eliminarUsuarios() {
+            $user = new User;            
+            $user->eliminarUsuario($_GET['codigoRol']);
+            header("Location: ?c=Users&a=consultarUsuarios");
+        }
     }
 ?>

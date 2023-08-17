@@ -211,5 +211,15 @@
             }
         }
         # CU08 - Eliminar Usuario
+        public function eliminarUsuario($userCode) {
+            try {
+                $sql = 'DELETE FROM USUARIOS WHERE usuario_codigo = :userCode';
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->bindValue('userCode', $userCode);
+                $stmt->execute();
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
     }
 ?>
