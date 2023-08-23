@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="assets/css/dashboard/sweetalert2.min.css">
 
     <!-- Sweet Alert V8.13.0 JS file-->
-    <script src="assets/js/dashboard/weetalert2.min.js"></script>
+    <script src="assets/js/dashboard/sweetalert2.min.js"></script>
 
     <!-- jQuery Custom Content Scroller V3.1.5 -->
     <link rel="stylesheet" href="assets/css/dashboard/jquery.mCustomScrollbar.css">
@@ -74,7 +74,7 @@
                             <a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
                             <ul>
                                 <li>
-                                    <a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
+                                    <a href="?c=Users&a=registrarUsuarios"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
                                 </li>
                                 <li>
                                     <a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>

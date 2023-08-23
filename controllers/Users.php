@@ -7,7 +7,9 @@
         }
         public function registrarUsuarios(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                echo "Formulario de Registro de Usuario";
+                require_once "views/roles/admin/header.view.php";                
+                require_once "views/modules/01_users/create_user.view.php";
+                require_once "views/roles/admin/footer.view.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $user = new User(
@@ -27,7 +29,9 @@
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $users = new User;
                 $users = $users->consultarUsuarios();
-                print_r($users);
+                require_once "views/roles/admin/header.view.php";
+                require_once "views/modules/01_users/read_user.view.php";
+                require_once "views/roles/admin/footer.view.php";
             }            
         }
         public function actualizarUsuarios() {
