@@ -35,12 +35,14 @@
             }            
         }
         public function actualizarUsuarios() {
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $user = new User;
-                $user = $user->obtenerUserPorId($_GET['codigoUser']);                
-                echo "Formulario de Actualización";
-            }
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $user = new User;
+                $user = $user->obtenerUserPorId($_GET['codigoUser']);
+                require_once "views/roles/admin/header.view.php";
+                require_once "views/modules/01_users/update_user.view.php";
+                require_once "views/roles/admin/footer.view.php";
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $user = new User(                    
                     $_POST['rolCode'],
                     $_POST['userCode'],
@@ -50,13 +52,14 @@
                     $_POST['userPass'],
                     $_POST['userStatus']
                 );                
+                print_r($user);
                 $user->actualizarUsuario();
                 header("Location: ?c=Users&a=consultarUsuarios");
             }
         }
         public function eliminarUsuarios() {
             $user = new User;            
-            $user->eliminarUsuario($_GET['codigoRol']);
+            $user->eliminarUsuario($_GET['codigoUser']);
             header("Location: ?c=Users&a=consultarUsuarios");
         }
     }

@@ -114,7 +114,6 @@
                 return false;
             }
         }
-        # CU02 - Cerrar Sesión
         # CU03 - Recuperar Contraseña
         # CU04 - Registro de Usuario
         public function registrarUsuario() {
@@ -184,6 +183,7 @@
                 $stmt->bindValue('userPass',sha1($this->getUserPass()));
                 $stmt->bindValue('userStatus',$this->getUserStatus());
                 $stmt->execute();
+                
             } catch (Exception $e) {
                 die($e->getMessage());
             }

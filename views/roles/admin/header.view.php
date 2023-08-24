@@ -77,7 +77,7 @@
                                     <a href="?c=Users&a=registrarUsuarios"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
                                 </li>
                                 <li>
-                                    <a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>
+                                    <a href="?c=Users&a=consultarUsuarios"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>
                                 </li>
                                 <li>
                                     <a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar usuario</a>

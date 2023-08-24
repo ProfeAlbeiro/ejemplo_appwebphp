@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
     require_once "Models/User.php";
     class Login{
         public function __construct(){}        
@@ -13,7 +13,18 @@
                 $user = new User($_POST['email'], $_POST['pass']);
                 $user = $user->login();                
                 if ($user) {
-                    header("Location: ?c=Dashboard");
+                    $status = $user->getUserStatus();
+                    $rol = $user->getRolCode();
+                    if ($status == 1) {
+                        if ($rol == 1) {
+                            $_SESSION['session'] = "admin";
+                            header("Location: ?c=Dashboard");
+                        } else {
+                            echo "Estás registrado, pero no eres administrador";
+                        }                        
+                    } else {
+                        echo "Estás registrado, pero no estás activo";
+                    }
                 } else {                    
                     $mensaje = "Usuario Incorrecto";
                     require_once "views/company/header.view.php";
