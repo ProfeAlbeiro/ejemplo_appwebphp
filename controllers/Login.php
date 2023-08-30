@@ -18,10 +18,13 @@
                     if ($status == 1) {
                         if ($rol == 1) {
                             $_SESSION['session'] = "admin";                            
+                            $_SESSION['rol'] = $rol;                            
                         } elseif ($rol == 2) {
                             $_SESSION['session'] = "customer";
+                            $_SESSION['rol'] = $rol;                            
                         } elseif ($rol == 3) {
                             $_SESSION['session'] = "seller";                            
+                            $_SESSION['rol'] = $rol;                            
                         }                         
                         header("Location: ?c=Dashboard");
                     } else {
