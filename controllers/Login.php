@@ -25,7 +25,9 @@
                         } elseif ($rol == 3) {
                             $_SESSION['session'] = "seller";                            
                             $_SESSION['rol'] = $rol;                            
-                        }                         
+                        }
+                        $user = serialize($user);                        
+                        $_SESSION['profile'] = $user;
                         header("Location: ?c=Dashboard");
                     } else {
                         echo "Estás registrado, pero no estás activo";

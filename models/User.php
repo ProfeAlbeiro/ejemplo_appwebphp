@@ -3,6 +3,7 @@
         # Atributos
         private $dbh;
         protected $rolCode;
+        protected $rolName;
         protected $userCode;
         protected $userName;
         protected $userLastName;
@@ -36,6 +37,17 @@
             $this->userPass = $userPass;
             $this->userStatus = $userStatus;
         }
+        public function __construct8($rolCode,$rolName,$userCode,$userName,$userLastName,$userEmail,$userPass,$userStatus){
+            unset($this->dbh);
+            $this->rolCode = $rolCode;
+            $this->rolName = $rolName;
+            $this->userCode = $userCode;
+            $this->userName = $userName;
+            $this->userLastName = $userLastName;
+            $this->userEmail = $userEmail;
+            $this->userPass = $userPass;
+            $this->userStatus = $userStatus;
+        }
 
         # Métodos: RolCode
         public function setRolCode($rolCode){
@@ -43,6 +55,13 @@
         } 
         public function getRolCode(){
             return $this->rolCode;
+        } 
+        # Métodos: RolName
+        public function setRolName($rolName){
+            $this->rolName = $rolName;
+        } 
+        public function getRolName(){
+            return $this->rolName;
         } 
         # Métodos: userCode
         public function setUserCode($userCode){
@@ -91,9 +110,11 @@
 
         # CU01 - Iniciar Sesión
         public function login(){
-            $sql = 'SELECT * FROM USUARIOS
-                    WHERE usuario_correo = :usuario_correo 
-                    AND usuario_pass = :usuario_pass';
+            
+            $sql = 'SELECT * FROM ROLES                     
+                    INNER JOIN USUARIOS 
+                    ON roles.rol_codigo = usuarios.rol_codigo
+                    WHERE usuario_correo = :usuario_correo AND usuario_pass = :usuario_pass';
             $stmt = $this->dbh->prepare($sql);
             $stmt->bindValue('usuario_correo', $this->getUserEmail());
             $stmt->bindValue('usuario_pass', sha1($this->getUserPass()));
@@ -102,6 +123,7 @@
             if ($userDb) {
                 $user = new User(
                     $userDb['rol_codigo'],
+                    $userDb['rol_nombre'],
                     $userDb['usuario_codigo'],
                     $userDb['usuario_nombre'],
                     $userDb['usuario_apellido'],
