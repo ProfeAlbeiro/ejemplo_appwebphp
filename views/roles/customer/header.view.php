@@ -55,20 +55,7 @@
                             <a href="home.html"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Dashboard</a>
                         </li>
 
-                        <li>
-                            <a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Roles <i class="fas fa-chevron-down"></i></a>
-                            <ul>
-                                <li>
-                                    <a href="?c=Roles&a=registrarRoles"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Rol</a>
-                                </li>
-                                <li>
-                                    <a href="?c=Roles&a=consultarRoles"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Roles</a>
-                                </li>
-                                <li>
-                                    <a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Rol</a>
-                                </li>
-                            </ul>
-                        </li>
+                        
 
                         <li>
                             <a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
