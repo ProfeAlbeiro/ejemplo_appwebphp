@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
     class Landing{        
         public function __construct(){}
         public function main(){

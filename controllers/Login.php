@@ -17,11 +17,13 @@
                     $rol = $user->getRolCode();
                     if ($status == 1) {
                         if ($rol == 1) {
-                            $_SESSION['session'] = "admin";
-                            header("Location: ?c=Dashboard");
-                        } else {
-                            echo "Estás registrado, pero no eres administrador";
-                        }                        
+                            $_SESSION['session'] = "admin";                            
+                        } elseif ($rol == 2) {
+                            $_SESSION['session'] = "customer";
+                        } elseif ($rol == 3) {
+                            $_SESSION['session'] = "seller";                            
+                        }                         
+                        header("Location: ?c=Dashboard");
                     } else {
                         echo "Estás registrado, pero no estás activo";
                     }

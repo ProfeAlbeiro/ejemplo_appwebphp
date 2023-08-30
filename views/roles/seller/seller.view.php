@@ -1,0 +1,1 @@
+<h1>Contenido del vendedor</h1>
